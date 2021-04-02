@@ -1,0 +1,12 @@
+{
+  "hosting": {
+    "public": ".",
+    "headers": [{
+      "source" : "index.html",
+      "headers" : [ {
+        "key" : "Cache-Control",
+        "value" : "max-age=0"
+      } ]
+    }]
+  }
+}
