@@ -1,0 +1,129 @@
+// install the "REST Client" extension in VSCode.
+@baseUrl={{$dotenv baseUrl}}
+
+
+###
+
+# deletes all the orders from the collection
+DELETE {{baseUrl}}/coffeeorders HTTP/1.1
+
+###
+
+# get all orders
+GET {{baseUrl}}/coffeeorders HTTP/1.1
+
+###
+
+# add new order for triple espresso
+POST {{baseUrl}}/coffeeorders HTTP/1.1
+content-type: application/json
+
+{
+    "coffee": "triple espresso",
+    "emailAddress": "audstanley@gmail.com",
+    "flavor": "Pumpkin Spice",
+    "strength": "100"
+}
+
+###
+
+# add new order for espresso
+POST {{baseUrl}}/coffeeorders HTTP/1.1
+content-type: application/json
+
+{
+    "coffee": "espresso",
+    "emailAddress": "aeinstein@aol.com",
+    "flavor": "Mocha",
+    "strength": "80"
+}
+
+###
+
+# add new order for americano
+POST {{baseUrl}}/coffeeorders HTTP/1.1
+content-type: application/json
+
+{
+    "coffee": "americano",
+    "emailAddress": "sjobs@apple.com",
+    "flavor": "Caramel",
+    "strength": "60"
+}
+
+###
+
+# add new order for earl grey
+POST {{baseUrl}}/coffeeorders HTTP/1.1
+content-type: application/json
+
+{
+    "coffee": "earl grey",
+    "emailAddress": "jlpicard@starfleet.com",
+    "flavor": "None",
+    "strength": "80"
+}
+
+###
+
+# get all orders
+GET {{baseUrl}}/coffeeorders HTTP/1.1
+
+###
+
+# get any order from audstanley@gmail.com
+
+GET {{baseUrl}}/coffeeorders/audstanley@gmail.com HTTP/1.1
+
+###
+
+# get any order from sjobs@apple.com
+
+GET {{baseUrl}}/coffeeorders/sjobs@apple.com HTTP/1.1
+
+###
+
+# get any order from jbezos@amazon.com (should be none)
+
+GET {{baseUrl}}/coffeeorders/jbezos@amazon.com HTTP/1.1
+
+###
+
+# update flavor for jlpicard@starfleet.com's order
+PUT {{baseUrl}}/coffeeorders/jlpicard@starfleet.com HTTP/1.1
+content-type: application/json
+
+{
+    "coffee": "earl grey",
+    "emailAddress": "jlpicard@starfleet.com",
+    "flavor": "Vanilla",
+    "strength": "80"
+}
+
+###
+
+# update coffee and flavor for audstanley@gmail.com's order
+PUT {{baseUrl}}/coffeeorders/audstanley@gmail.com HTTP/1.1
+content-type: application/json
+
+{
+    "coffee": "double espresso",
+    "emailAddress": "audstanley@gmail.com",
+    "flavor": "Mocha",
+    "strength": "100"
+}
+
+###
+
+# get all orders
+GET {{baseUrl}}/coffeeorders HTTP/1.1
+
+###
+
+# only delete jlpicard@starfleet.com's last order
+DELETE {{baseUrl}}/coffeeorders/jlpicard@starfleet.com HTTP/1.1
+
+###
+
+# get all orders
+GET {{baseUrl}}/coffeeorders HTTP/1.1
